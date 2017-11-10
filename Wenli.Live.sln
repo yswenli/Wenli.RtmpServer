@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wenli.Live.Common", "Wenli.Live.Common\Wenli.Live.Common.csproj", "{18956C88-0583-4B5F-A2BD-8CBC6B7E0A04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wenli.Live.WQueue", "Wenli.Live.WQueue\Wenli.Live.WQueue.csproj", "{41CDF701-E354-4834-B5E6-D0797113B089}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wenli.Live.RtmpLib", "Wenli.Live.RtmpLib\Wenli.Live.RtmpLib.csproj", "{E2D0DEB5-3109-4445-AC51-D81932FBFFEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wenli.Live.LiveServer", "Wenli.Live.LiveServer\Wenli.Live.LiveServer.csproj", "{C63CB852-B735-477D-8FCB-97D00707FB71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wenli.Live.RtmpClient", "Wenli.Live.RtmpClient\Wenli.Live.RtmpClient.csproj", "{AC10FDF7-B9E3-4959-BCDD-2F6CB1CE1E3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18956C88-0583-4B5F-A2BD-8CBC6B7E0A04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18956C88-0583-4B5F-A2BD-8CBC6B7E0A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18956C88-0583-4B5F-A2BD-8CBC6B7E0A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18956C88-0583-4B5F-A2BD-8CBC6B7E0A04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41CDF701-E354-4834-B5E6-D0797113B089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41CDF701-E354-4834-B5E6-D0797113B089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41CDF701-E354-4834-B5E6-D0797113B089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41CDF701-E354-4834-B5E6-D0797113B089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2D0DEB5-3109-4445-AC51-D81932FBFFEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2D0DEB5-3109-4445-AC51-D81932FBFFEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2D0DEB5-3109-4445-AC51-D81932FBFFEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2D0DEB5-3109-4445-AC51-D81932FBFFEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C63CB852-B735-477D-8FCB-97D00707FB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C63CB852-B735-477D-8FCB-97D00707FB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C63CB852-B735-477D-8FCB-97D00707FB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C63CB852-B735-477D-8FCB-97D00707FB71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC10FDF7-B9E3-4959-BCDD-2F6CB1CE1E3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC10FDF7-B9E3-4959-BCDD-2F6CB1CE1E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC10FDF7-B9E3-4959-BCDD-2F6CB1CE1E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC10FDF7-B9E3-4959-BCDD-2F6CB1CE1E3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

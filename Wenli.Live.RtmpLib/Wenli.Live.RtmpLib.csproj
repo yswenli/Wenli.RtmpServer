@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E2D0DEB5-3109-4445-AC51-D81932FBFFEF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wenli.Live.RtmpLib</RootNamespace>
+    <AssemblyName>Wenli.Live.RtmpLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Fleck, Version=0.14.0.59, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fleck.0.14.0.59\lib\net40\Fleck.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Amfs\AMF0\Amf0TypeMarkers.cs" />
+    <Compile Include="Amfs\AMF0\AMFWriters\Amf0ArrayWriter.cs" />
+    <Compile Include="Amfs\AMF0\AMFWriters\Amf0AsObjectWriter.cs" />
+    <Compile Include="Amfs\AMF0\AMFWriters\Amf0BooleanWriter.cs" />
+    <Compile Include="Amfs\AMF0\AMFWriters\Amf0CharWriter.cs" />
+    <Compile Include="Amfs\AMF0\AMFWriters\Amf0DateTimeWriter.cs" />
+    <Compile Include="Amfs\AMF0\AMFWriters\Amf0EnumWriter.cs" />
+    <Compile Include="Amfs\AMF0\AMFWriters\Amf0GuidWriter.cs" />
+    <Compile Include="Amfs\AMF0\AMFWriters\Amf0NumberWriter.cs" />
+    <Compile Include="Amfs\AMF0\AMFWriters\Amf0ObjectWriter.cs" />
+    <Compile Include="Amfs\AMF0\AMFWriters\Amf0StringWriter.cs" />
+    <Compile Include="Amfs\AMF0\AMFWriters\Amf0XDocumentWriter.cs" />
+    <Compile Include="Amfs\AMF0\AMFWriters\Amf0XElementWriter.cs" />
+    <Compile Include="Amfs\AMF3\Amf3TypeMarkers.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3ArrayWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3AsObjectWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3BooleanWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3ByteArrayWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3CharWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3DateTimeWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3DoubleWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3EnumWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3GuidWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3IntWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3NativeByteArrayWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3ObjectWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3StringWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3VectorWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3XDocumentWriter.cs" />
+    <Compile Include="Amfs\AMF3\AMFWriters\Amf3XElementWriter.cs" />
+    <Compile Include="Amfs\AMF3\ArrayCollection.cs" />
+    <Compile Include="Amfs\AMF3\ByteArray.cs" />
+    <Compile Include="Amfs\AMF3\DataInput.cs" />
+    <Compile Include="Amfs\AMF3\DataOutput.cs" />
+    <Compile Include="Amfs\AMF3\IDataInput.cs" />
+    <Compile Include="Amfs\AMF3\IDataOutput.cs" />
+    <Compile Include="Amfs\AMF3\IExternalizable.cs" />
+    <Compile Include="Amfs\AMF3\ObjectProxy.cs" />
+    <Compile Include="Amfs\AmfReader.cs" />
+    <Compile Include="Amfs\AmfWriter.cs" />
+    <Compile Include="Amfs\AmfWriterMap.cs" />
+    <Compile Include="Amfs\ObjectWrappers\AsObjectWrapper.cs" />
+    <Compile Include="Amfs\ObjectWrappers\BasicObjectWrapper.cs" />
+    <Compile Include="Amfs\ObjectWrappers\ExceptionWrapper.cs" />
+    <Compile Include="Amfs\ObjectWrappers\ExternalizableWrapper.cs" />
+    <Compile Include="Events\AudioData.cs" />
+    <Compile Include="Events\EventReceivedEventArgs.cs" />
+    <Compile Include="Events\ExceptionalEventArgs.cs" />
+    <Compile Include="Events\VideoData.cs" />
+    <Compile Include="Flv\FlvPacket.cs" />
+    <Compile Include="Flv\FlvPacketWriter.cs" />
+    <Compile Include="Flv\FlvTagHeader.cs" />
+    <Compile Include="Interfaces\IStreamConnect.cs" />
+    <Compile Include="Libs\AsObjectConverter.cs" />
+    <Compile Include="Libs\BasicObjectWrapper.cs" />
+    <Compile Include="Interfaces\IAmfItemWriter.cs" />
+    <Compile Include="Libs\AsObjectWrapper.cs" />
+    <Compile Include="Libs\ExceptionWrapper.cs" />
+    <Compile Include="Libs\ExternalizableWrapper.cs" />
+    <Compile Include="Libs\MiniTypeConverter.cs" />
+    <Compile Include="Libs\MethodFactory.cs" />
+    <Compile Include="Models\AsObject.cs" />
+    <Compile Include="Models\ClassDescription.cs" />
+    <Compile Include="Events\ChannelDataReceivedEventArgs.cs" />
+    <Compile Include="Events\Abort.cs" />
+    <Compile Include="Events\Acknowledgement.cs" />
+    <Compile Include="Events\AudioVideoData.cs" />
+    <Compile Include="Events\ChunkSize.cs" />
+    <Compile Include="Events\Command.cs" />
+    <Compile Include="Events\PeerBandwidth.cs" />
+    <Compile Include="Events\UserControlMessage.cs" />
+    <Compile Include="Events\WindowAcknowledgementSize.cs" />
+    <Compile Include="Flexing\FlexMessage.cs" />
+    <Compile Include="Flexing\FlexMessageHeaders.cs" />
+    <Compile Include="Interfaces\IMemberWrapper.cs" />
+    <Compile Include="Interfaces\IObjectWrapper.cs" />
+    <Compile Include="Models\InvocationException.cs" />
+    <Compile Include="Events\MessageReceivedEventArgs.cs" />
+    <Compile Include="Messages\AcknowledgeMessage.cs" />
+    <Compile Include="Messages\AsyncMessage.cs" />
+    <Compile Include="Messages\CommandMessage.cs" />
+    <Compile Include="Messages\ErrorMessage.cs" />
+    <Compile Include="Messages\RemotingMessage.cs" />
+    <Compile Include="Libs\ObjectWrapperFactory.cs" />
+    <Compile Include="Models\StatusAsObject.cs" />
+    <Compile Include="Models\StatusCode.cs" />
+    <Compile Include="Models\ClientSession.cs" />
+    <Compile Include="Models\ClientSessionDictionary.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rtmping\RtmpConnect.cs" />
+    <Compile Include="Rtmping\RtmpHandshake.cs" />
+    <Compile Include="Rtmping\RtmpMessage.cs" />
+    <Compile Include="Rtmping\RtmpHeader.cs" />
+    <Compile Include="Libs\SerializationContext.cs" />
+    <Compile Include="Libs\SerializerObjectFactory.cs" />
+    <Compile Include="Rtmping\RtmpPacket.cs" />
+    <Compile Include="Rtmping\RtmpPacketReader.cs" />
+    <Compile Include="Rtmping\RtmpPacketWriter.cs" />
+    <Compile Include="Rtmping\RtmpServer.cs" />
+    <Compile Include="WebSockets\WebsocketConnect.cs" />
+    <Compile Include="WebSockets\WebsocketStream.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wenli.Live.Common\Wenli.Live.Common.csproj">
+      <Project>{18956c88-0583-4b5f-a2bd-8cbc6b7e0a04}</Project>
+      <Name>Wenli.Live.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

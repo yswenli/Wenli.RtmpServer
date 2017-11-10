@@ -1,0 +1,8 @@
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.Common\bin\Debug\Wenli.Live.Common.dll
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.Common\bin\Debug\Wenli.Live.Common.pdb
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.dll
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.pdb
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.Common\bin\Debug\Wenli.Live.Common.dll
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.Common\bin\Debug\Wenli.Live.Common.pdb
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.dll
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.pdb

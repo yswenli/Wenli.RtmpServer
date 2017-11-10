@@ -1,0 +1,12 @@
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.RtmpStream\bin\Debug\Wenli.Live.RtmpStream.dll
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.RtmpStream\bin\Debug\Wenli.Live.RtmpStream.pdb
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.RtmpStream\obj\Debug\Wenli.Live.RtmpStream.csprojResolveAssemblyReference.cache
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.RtmpStream\obj\Debug\Wenli.Live.RtmpStream.dll
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.RtmpStream\obj\Debug\Wenli.Live.RtmpStream.pdb
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.RtmpStream\bin\Debug\Wenli.Live.RtmpStream.dll
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.RtmpStream\bin\Debug\Wenli.Live.RtmpStream.pdb
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.RtmpStream\obj\Debug\Wenli.Live.RtmpStream.dll
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.RtmpStream\obj\Debug\Wenli.Live.RtmpStream.pdb
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.RtmpStream\obj\Debug\Wenli.Live.RtmpStream.csprojResolveAssemblyReference.cache
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.RtmpStream\bin\Debug\Wenli.Live.RtmpStream.dll.CodeAnalysisLog.xml
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.RtmpStream\bin\Debug\Wenli.Live.RtmpStream.dll.lastcodeanalysissucceeded

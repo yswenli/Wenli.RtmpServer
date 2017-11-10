@@ -1,0 +1,9 @@
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.WQueue\bin\Debug\Wenli.Live.WQueue.dll
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.WQueue\bin\Debug\Wenli.Live.WQueue.pdb
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.WQueue\obj\Debug\Wenli.Live.WQueue.csprojResolveAssemblyReference.cache
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.WQueue\obj\Debug\Wenli.Live.WQueue.dll
+C:\Users\yswenli\Desktop\rtmplive\wenli.live\Wenli.Live.WQueue\obj\Debug\Wenli.Live.WQueue.pdb
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.WQueue\bin\Debug\Wenli.Live.WQueue.dll
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.WQueue\bin\Debug\Wenli.Live.WQueue.pdb
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.WQueue\obj\Debug\Wenli.Live.WQueue.dll
+E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.WQueue\obj\Debug\Wenli.Live.WQueue.pdb
