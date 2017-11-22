@@ -45,10 +45,28 @@ namespace Wenli.Live.RtmpLib.Rtmping
             };
         }
 
-        public static async Task<RtmpHandshake> ReadAsync(Stream stream, bool readVersion, CancellationToken cancellationToken)
+        static async Task<RtmpHandshake> ReadAsync(Stream stream, bool readVersion, CancellationToken ct)
         {
             var size = HandshakeSize + (readVersion ? 1 : 0);
-            var buffer = await StreamHelper.ReadBytesAsync(stream, size, cancellationToken);
+
+            var buffer = await StreamHelper.ReadBytesAsync(stream, size, ct);
+
+            using (var reader = new AmfReader(new MemoryStream(buffer), null))
+            {
+                return new RtmpHandshake()
+                {
+                    Version = readVersion ? reader.ReadByte() : default(byte),
+                    Time = reader.ReadUInt32(),
+                    Time2 = reader.ReadUInt32(),
+                    Random = reader.ReadBytes(HandshakeRandomSize)
+                };
+            }
+        }
+        static RtmpHandshake Read(Stream stream, bool readVersion)
+        {
+            var size = HandshakeSize + (readVersion ? 1 : 0);
+
+            var buffer = StreamHelper.ReadBytes(stream, size);
 
             using (var reader = new AmfReader(new MemoryStream(buffer), null))
             {
@@ -62,7 +80,7 @@ namespace Wenli.Live.RtmpLib.Rtmping
             }
         }
 
-        public static Task WriteAsync(Stream stream, RtmpHandshake h, bool writeVersion, CancellationToken ct)
+        static Task WriteAsync(Stream stream, RtmpHandshake h, bool writeVersion, CancellationToken ct)
         {
             using (var memoryStream = new MemoryStream())
             using (var writer = new AmfWriter(memoryStream, null))
@@ -122,8 +140,9 @@ namespace Wenli.Live.RtmpLib.Rtmping
             //over time cancel task
             Timer timer = new Timer((s) =>
             {
-                //cts.Cancel();
-                //throw new TimeoutException();
+                cts.Cancel();
+                throw new TimeoutException("rtmp 握手已超时！");
+
             }, null, ReceiveTimeout, Timeout.Infinite);
 
 
@@ -143,25 +162,12 @@ namespace Wenli.Live.RtmpLib.Rtmping
             await RtmpHandshake.WriteAsync(stream, s01, true, cts.Token);
 
             //write s2
-            timer.Change(Timeout.Infinite, Timeout.Infinite);
             random.NextBytes(randomBytes);
-            var s2 = new RtmpHandshake()
-            {
-                Time = (uint)Environment.TickCount,
-                Time2 = 0,
-                Random = randomBytes
-            };
-            timer.Change(ReceiveTimeout, Timeout.Infinite);
-            await RtmpHandshake.WriteAsync(stream, s2, false, cts.Token);
-
-            // read c2
-            timer.Change(SendTimeout, Timeout.Infinite);
-            var c2 = await RtmpHandshake.ReadAsync(stream, false, cts.Token);
+            await C2S2Async(stream, randomBytes, cts, timer);
             timer.Change(Timeout.Infinite, Timeout.Infinite);
 
 
-            // handshake check
-            timer.Change(Timeout.Infinite, Timeout.Infinite);
+            // handshake check            
             //if (!c0.Random.SequenceEqual(s2.Random))
             //throw new ProtocolViolationException();
 
@@ -179,6 +185,31 @@ namespace Wenli.Live.RtmpLib.Rtmping
 
             return client_id;
         }
+
+        static Task C2S2Async(Stream stream, byte[] randomBytes, CancellationTokenSource cts, Timer timer)
+        {
+            timer.Change(Timeout.Infinite, Timeout.Infinite);
+
+            var s2 = new RtmpHandshake()
+            {
+                Time = (uint)Environment.TickCount,
+                Time2 = 0,
+                Random = randomBytes
+            };
+
+            //c2
+            Task.WaitAll(new Task[] { Task.Factory.StartNew(() => { RtmpHandshake.Read(stream, false); }) }, 3000);
+            //s2
+            timer.Change(SendTimeout, Timeout.Infinite);
+            return RtmpHandshake.WriteAsync(stream, s2, false, cts.Token);
+        }
+
+        static void C2S2(Stream stream)
+        {
+            RtmpHandshake.Read(stream, false);
+
+        }
+
 
 
 

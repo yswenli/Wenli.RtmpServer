@@ -6,3 +6,9 @@ E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.Common\bin\
 E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.Common\bin\Debug\Wenli.Live.Common.pdb
 E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.dll
 E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.pdb
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\bin\Debug\Wenli.Live.Common.dll
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\bin\Debug\Wenli.Live.Common.pdb
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.csprojResolveAssemblyReference.cache
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.dll
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.pdb
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.csproj.CoreCompileInputs.cache

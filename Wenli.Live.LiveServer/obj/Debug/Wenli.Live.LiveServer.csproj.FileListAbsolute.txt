@@ -20,3 +20,15 @@ E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.LiveServer\
 E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.LiveServer\obj\Debug\Wenli.Live.LiveServer.csprojResolveAssemblyReference.cache
 E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.LiveServer\obj\Debug\Wenli.Live.LiveServer.exe
 E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.LiveServer\obj\Debug\Wenli.Live.LiveServer.pdb
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.LiveServer\bin\Debug\Wenli.Live.LiveServer.exe.config
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.LiveServer\bin\Debug\Wenli.Live.LiveServer.exe
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.LiveServer\bin\Debug\Wenli.Live.LiveServer.pdb
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.LiveServer\bin\Debug\Wenli.Live.Common.dll
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.LiveServer\bin\Debug\Wenli.Live.RtmpLib.dll
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.LiveServer\bin\Debug\Fleck.dll
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.LiveServer\bin\Debug\Wenli.Live.Common.pdb
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.LiveServer\bin\Debug\Wenli.Live.RtmpLib.pdb
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.LiveServer\obj\Debug\Wenli.Live.LiveServer.csprojResolveAssemblyReference.cache
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.LiveServer\obj\Debug\Wenli.Live.LiveServer.exe
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.LiveServer\obj\Debug\Wenli.Live.LiveServer.pdb
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.LiveServer\obj\Debug\Wenli.Live.LiveServer.csproj.CoreCompileInputs.cache
