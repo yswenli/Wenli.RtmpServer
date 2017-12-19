@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wenli.Live.LiveServer", "We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wenli.Live.RtmpClient", "Wenli.Live.RtmpClient\Wenli.Live.RtmpClient.csproj", "{AC10FDF7-B9E3-4959-BCDD-2F6CB1CE1E3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wenli.Live.WQueue.Test", "Wenli.Live.WQueue.Test\Wenli.Live.WQueue.Test.csproj", "{5A5122FD-23F7-4574-BB20-9AF333C4A6E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,8 +41,15 @@ Global
 		{AC10FDF7-B9E3-4959-BCDD-2F6CB1CE1E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC10FDF7-B9E3-4959-BCDD-2F6CB1CE1E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC10FDF7-B9E3-4959-BCDD-2F6CB1CE1E3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A5122FD-23F7-4574-BB20-9AF333C4A6E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A5122FD-23F7-4574-BB20-9AF333C4A6E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A5122FD-23F7-4574-BB20-9AF333C4A6E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A5122FD-23F7-4574-BB20-9AF333C4A6E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1924F346-9E10-4C57-951A-7E362661FEB1}
 	EndGlobalSection
 EndGlobal

@@ -8,7 +8,11 @@ E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.Common\obj\
 E:\百度云\Develop\案例\网络类\rtmplive\wenli.live\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.pdb
 F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\bin\Debug\Wenli.Live.Common.dll
 F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\bin\Debug\Wenli.Live.Common.pdb
-F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.csprojResolveAssemblyReference.cache
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\bin\Debug\Newtonsoft.Json.dll
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\bin\Debug\protobuf-net.dll
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\bin\Debug\Newtonsoft.Json.xml
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\bin\Debug\protobuf-net.xml
 F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.dll
 F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.pdb
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.csprojResolveAssemblyReference.cache
 F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.Common\obj\Debug\Wenli.Live.Common.csproj.CoreCompileInputs.cache
