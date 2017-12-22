@@ -6,23 +6,26 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using Wenli.Live.Common;
+using Wenli.Live.WQueue.Model;
 using Wenli.Live.WQueue.Net.Model;
 
 namespace Wenli.Live.WQueue.Net
 {
-    internal static class WLPackage
+    internal class WLPackage
     {
         /// <summary>
         /// 从流中读取数据
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>
-        private static MessageBase Read(Stream stream)
+        private static TopicMessage Read(Stream stream)
         {
             var len = BitConverter.ToInt32(StreamHelper.ReadBytes(stream, 4), 0);
-            var content = StreamHelper.ReadBytes(stream, len);
-            return SerializeHelper.ProtolBufDeserialize<MessageBase>(content);
+            var type = StreamHelper.ReadBytes(stream, 1);
+            var content = StreamHelper.ReadBytes(stream, len - 1);
+            return SerializeHelper.ProtolBufDeserialize<TopicMessage>(content);
         }
 
         private static void ReadSend(Stream stream)
@@ -31,71 +34,117 @@ namespace Wenli.Live.WQueue.Net
             StreamHelper.ReadBytes(stream, len);
         }
 
-        /// <summary>
-        /// 将内容写入到流
-        /// </summary>
-        /// <param name="stream"></param>
-        /// <param name="msg"></param>
-
-        private static void Write(Stream stream, MessageBase msg)
+        private static void Write(Stream stream, byte type, TopicMessage msg)
         {
             var content = SerializeHelper.ProtolBufSerialize(msg);
-            var len = BitConverter.GetBytes(content.Length);
+            var len = BitConverter.GetBytes(content.Length + 1);
 
             List<byte> dataList = new List<byte>();
             dataList.AddRange(len);
+            dataList.Add(type);
             dataList.AddRange(content);
+
             var data = dataList.ToArray();
             stream.Write(data, 0, data.Length);
         }
 
-        private static void WriteAsync(Stream stream, MessageBase msg)
-        {
-            var content = SerializeHelper.ProtolBufSerialize(msg);
-            var len = BitConverter.GetBytes(content.Length);
-            List<byte> dataList = new List<byte>();
-            dataList.AddRange(len);
-            dataList.AddRange(content);
-            var data = dataList.ToArray();
-            stream.WriteAsync(data, 0, data.Length);
-        }
 
-        /// <summary>
-        /// 客户端请求
-        /// </summary>
-        /// <param name="stream"></param>
-        /// <param name="msg"></param>
-        /// <returns></returns>
-        public static MessageBase Request(Stream stream, MessageBase msg)
+
+        public static TopicMessage Request(Stream stream, byte type, TopicMessage msg)
         {
-            Write(stream, msg);
+            Write(stream, type, msg);
             return Read(stream);
         }
 
-        public static void Send(Stream stream, MessageBase msg)
+
+        public static void Send(Stream stream, byte type, TopicMessage msg)
         {
-            Write(stream, msg);
+            Write(stream, type, msg);
             ReadSend(stream);
         }
-        /// <summary>
-        /// 服务器回复
-        /// </summary>
-        /// <param name="stream"></param>
-        /// <param name="id"></param>
-        /// <param name="handler"></param>
-        public static void Response(Stream stream, string id, Func<string, MessageBase, MessageBase> handler)
+
+
+
+        #region server
+
+        object _locker = new object();
+
+        List<byte> _sessionData = new List<byte>();
+
+        const int LenSize = 4;
+
+        const int HeadSize = 5;
+
+
+        public void ProcessReceived(byte[] data, Action<SocketMessage> callBack)
         {
-            var msg = Read(stream);
+            lock (_locker)
+            {
+                try
+                {
+                    List<byte> list = new List<byte>();
 
-            SessionManager.Active(id);
+                    list.AddRange(data);
 
-            var rmsg = handler.Invoke(id, msg);
+                    _sessionData.AddRange(list);
 
-            if (rmsg != null)
+                    if (_sessionData.Count > 0)
+                    {
+                        do
+                        {
+                            var bsd = _sessionData.ToArray();
 
-                WriteAsync(stream, rmsg);
+                            if (bsd.Length >= HeadSize)
+                            {
+                                var len = BitConverter.ToInt32(bsd, 0);
+
+                                var bodyLen = len - 1;
+
+                                var total = len + LenSize;
+
+                                if (total <= bsd.Length)
+                                {
+                                    var type = bsd[4];
+
+                                    var msg = new SocketMessage()
+                                    {
+                                        Length = len,
+                                        Type = type
+                                    };
+                                    if (bodyLen > 0)
+                                    {
+                                        msg.Content = bsd.Skip(HeadSize).Take(bodyLen).ToArray();
+                                    }
+                                    else
+                                    {
+                                        msg.Content = null;
+                                    }
+
+                                    _sessionData.RemoveRange(0, total);
+
+                                    callBack?.Invoke(msg);
+                                }
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        while (true);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
 
         }
+
+
+
+
+        #endregion
 
     }
 }

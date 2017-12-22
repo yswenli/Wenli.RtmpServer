@@ -1,6 +1,7 @@
 ﻿using System;
 using Wenli.Live.Common;
 using Wenli.Live.WQueue.Libs;
+using Wenli.Live.WQueue.Model;
 using Wenli.Live.WQueue.Models;
 using Wenli.Live.WQueue.Net;
 using Wenli.Live.WQueue.Net.Model;
@@ -47,34 +48,42 @@ namespace Wenli.Live.WQueue
             _server.Start(Process);
         }
 
-        private MessageBase Process(string id, MessageBase msg)
+        private SocketMessage Process(string id, SocketMessage msg)
         {
             try
             {
+                TopicMessage b_msg;
+
                 switch (msg.Type)
                 {
                     case (byte)Net.Model.MessageType.Leave:
+
                         UserListHelper.Remove(id);
                         break;
                     case (byte)Net.Model.MessageType.EnqueueRequest:
-                        UserListHelper.GetOrAdd(id, msg.Topic);
-                        TopicQueueHelper.Enqueue(new QueueMessage<string>() { Topic = msg.Topic, Content = msg.Content });
-                        return new MessageBase((byte)Net.Model.MessageType.EnqueueResponse, msg.Topic, null);
+
+                        b_msg = SerializeHelper.ProtolBufDeserialize<TopicMessage>(msg.Content);
+                        UserListHelper.GetOrAdd(id, b_msg.Topic);
+                        TopicQueueHelper.Enqueue(b_msg);
+                        return new SocketMessage((byte)Net.Model.MessageType.EnqueueResponse, null);
                     case (byte)Net.Model.MessageType.DequeueRequest:
-                        UserListHelper.GetOrAdd(id, msg.Topic);
-                        var data = TopicQueueHelper.Dequque(msg.Topic);
+
+                        b_msg = SerializeHelper.ProtolBufDeserialize<TopicMessage>(msg.Content);
+                        UserListHelper.GetOrAdd(id, b_msg.Topic);
+                        var data = TopicQueueHelper.Dequque(b_msg.Topic);
                         if (data != null)
                         {
-                            return new MessageBase((byte)Net.Model.MessageType.DequeueResponse, msg.Topic, data.Content);
+                            return new SocketMessage((byte)Net.Model.MessageType.DequeueResponse, SerializeHelper.ProtolBufSerialize(data));
                         }
                         else
                         {
-                            return new MessageBase((byte)Net.Model.MessageType.DequeueResponse, msg.Topic, null);
+                            var rmsg = new TopicMessage(b_msg.Topic, null);
+                            return new SocketMessage((byte)Net.Model.MessageType.DequeueResponse, SerializeHelper.ProtolBufSerialize(rmsg));
                         }
                     case (byte)Net.Model.MessageType.Ping:
-                        return new MessageBase((byte)Net.Model.MessageType.Pong, null, null);
+                        return new SocketMessage((byte)Net.Model.MessageType.Pong, null);
                     default:
-                        _server.Disconnected(id);
+                        _server.CloseClientSocket(id);
                         break;
                 }
             }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Wenli.Live.Common;
+using Wenli.Live.WQueue.Model;
 using Wenli.Live.WQueue.Net;
 using Wenli.Live.WQueue.Net.Model;
 
@@ -31,48 +32,33 @@ namespace Wenli.Live.WQueue
         string _ip;
 
         int _port;
+        
 
-        int _maxClients = 4;
+        TcpClient _client;
 
         public Client(string userID, string ip = "127.0.0.1", int port = 1937, int maxReConnectCount = 10, int maxClients = 4)
         {
             _userID = userID;
             _ip = ip;
             _port = port;
-            _maxClients = maxClients;
-
-            for (int i = 1; i <= 4; i++)
-            {
-                _pool.Add(new TcpClient(_userID + i, _ip, _port));
-            }
-        }
-
-        private TcpClient GetClient()
-        {
-            var rnd = _random.Next();
-
-            var index = rnd % _maxClients;
-
-            return _pool[index];
+            _client = new TcpClient(userID, ip, port);
         }
 
 
         public void Connect()
         {
-            foreach (var item in _pool)
-            {
-                item.Connect();
-            }
+            _client.Connect();
 
             Task.Factory.StartNew(() =>
             {
                 while (true)
                 {
+                    Thread.Sleep(5 * 1000);
+
                     if (_actived.AddSeconds(20) < DateTimeHelper.Current)
                     {
                         Ping();
                     }
-                    Thread.Sleep(5 * 1000);
                 }
             });
         }
@@ -80,21 +66,12 @@ namespace Wenli.Live.WQueue
 
         public void Leave()
         {
-            var msg = new MessageBase()
-            {
-                Type = (byte)Net.Model.MessageType.Leave
-            };
-            GetClient().SendBase(msg);
+            _client.SendBase((byte)Net.Model.MessageType.Leave, null);
         }
 
         public void Ping()
         {
-            var msg = new MessageBase()
-            {
-                Type = (byte)Net.Model.MessageType.Ping
-            };
-
-            GetClient().SendBase(msg);
+            _client.SendBase((byte)Net.Model.MessageType.Ping, null);
 
             _actived = DateTimeHelper.Current;
         }
@@ -107,13 +84,12 @@ namespace Wenli.Live.WQueue
 
         public void Enqueue(string queue, string value)
         {
-            var msg = new MessageBase()
+            var msg = new TopicMessage()
             {
-                Type = (byte)Net.Model.MessageType.EnqueueRequest,
                 Topic = queue,
                 Content = value
             };
-            GetClient().SendBase(msg);
+            _client.SendBase((byte)Net.Model.MessageType.EnqueueRequest, msg);
             _actived = DateTimeHelper.Current;
         }
 
@@ -131,13 +107,12 @@ namespace Wenli.Live.WQueue
 
         public string Dequeue(string queue)
         {
-            var msg = new MessageBase()
+            var msg = new TopicMessage()
             {
-                Type = (byte)Net.Model.MessageType.DequeueRequest,
                 Topic = queue
             };
 
-            var rmsg = GetClient().RequestBase(msg);
+            var rmsg = _client.RequestBase((byte)Net.Model.MessageType.DequeueRequest, msg);
 
             _actived = DateTimeHelper.Current;
 

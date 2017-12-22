@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using Wenli.Live.Common;
+using Wenli.Live.WQueue.Model;
 using Wenli.Live.WQueue.Net.Model;
 
 namespace Wenli.Live.WQueue.Net
@@ -47,20 +48,20 @@ namespace Wenli.Live.WQueue.Net
         }
 
 
-        public MessageBase RequestBase(MessageBase msg)
+        public TopicMessage RequestBase(byte type, TopicMessage msg)
         {
             lock (_locker)
             {
-                return WLPackage.Request(_NStream, msg);
+                return WLPackage.Request(_NStream, type, msg);
             }
 
         }
 
-        public void SendBase(MessageBase msg)
+        public void SendBase(byte type, TopicMessage msg)
         {
             lock (_locker)
             {
-                WLPackage.Send(_NStream, msg);
+                WLPackage.Send(_NStream, type, msg);
             }
         }
 

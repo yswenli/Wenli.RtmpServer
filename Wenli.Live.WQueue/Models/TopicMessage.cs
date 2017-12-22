@@ -6,17 +6,11 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wenli.Live.WQueue.Net.Model
+namespace Wenli.Live.WQueue.Model
 {
     [ProtoContract]
-    public class MessageBase
+    public class TopicMessage
     {
-        [ProtoMember(1, IsRequired = true)]
-        public byte Type
-        {
-            get; set;
-        }
-
         [ProtoMember(2, IsRequired = false)]
         public string Topic
         {
@@ -30,11 +24,10 @@ namespace Wenli.Live.WQueue.Net.Model
             get; set;
         }
 
-        public MessageBase() { }
+        public TopicMessage() { }
 
-        public MessageBase(byte type, string topic, string content)
+        public TopicMessage(string topic, string content)
         {
-            this.Type = type;
             this.Content = content;
         }
     }

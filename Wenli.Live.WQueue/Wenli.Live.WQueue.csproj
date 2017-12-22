@@ -51,11 +51,12 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="Libs\TopicQueueHelper.cs" />
-    <Compile Include="Models\QueueMessage.cs" />
-    <Compile Include="Net\Model\SocketInfo.cs" />
+    <Compile Include="Net\Model\SocketMessage.cs" />
+    <Compile Include="Net\Model\UserToken.cs" />
+    <Compile Include="Net\SocketAsyncEventArgsPool.cs" />
     <Compile Include="Net\WLPackage.cs" />
     <Compile Include="Net\Model\IMessage.cs" />
-    <Compile Include="Net\Model\MessageBase.cs" />
+    <Compile Include="Models\TopicMessage.cs" />
     <Compile Include="Net\Model\MessageType.cs" />
     <Compile Include="Net\TcpClient.cs" />
     <Compile Include="Net\TcpServer.cs" />

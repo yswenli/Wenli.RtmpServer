@@ -26,3 +26,4 @@ F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.RtmpL
 F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.RtmpLib\obj\Debug\Wenli.Live.RtmpLib.csprojResolveAssemblyReference.cache
 F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.RtmpLib\obj\Debug\Wenli.Live.RtmpLib.dll
 F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.RtmpLib\obj\Debug\Wenli.Live.RtmpLib.pdb
+F:\百度云\Develop\案例\网络类\RtmpLive\Wenli.RtmpServer\Wenli.Live.RtmpLib\obj\Debug\Wenli.Live.RtmpLib.csproj.CoreCompileInputs.cache

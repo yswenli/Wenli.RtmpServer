@@ -11,7 +11,7 @@ namespace Wenli.Live.WQueue.Net
 {
     static class SessionManager
     {
-        static List<SocketInfo> _list = new List<SocketInfo>();
+        static List<UserToken> _list = new List<UserToken>();
 
         static object _locker = new object();
 
@@ -23,16 +23,16 @@ namespace Wenli.Live.WQueue.Net
                 {
                     try
                     {
-                        List<SocketInfo> nlist;
+                        List<UserToken> nlist;
                         lock (_locker)
                         {
-                            nlist = _list.Where(b => b.Actived.AddSeconds(20) < DateTimeHelper.Current || !b.Client.Connected || b.Client == null).ToList();
+                            nlist = _list.Where(b => b.Actived.AddSeconds(12000) < DateTimeHelper.Current || b.Socket == null || (b.Socket != null && !b.Socket.Connected)).ToList();
                         }
                         if (nlist != null && nlist.Count > 0)
                         {
                             foreach (var item in nlist)
                             {
-                                if (item.Client == null || !item.Client.Connected)
+                                if (item.Socket == null || !item.Socket.Connected)
                                 {
                                     lock (_locker)
                                     {
@@ -57,7 +57,7 @@ namespace Wenli.Live.WQueue.Net
         }
 
 
-        static ActionBlock<SocketInfo> _addBlock = new ActionBlock<SocketInfo>((socketInfo) =>
+        static ActionBlock<UserToken> _addBlock = new ActionBlock<UserToken>((socketInfo) =>
         {
             lock (_locker)
             {
@@ -65,9 +65,9 @@ namespace Wenli.Live.WQueue.Net
             }
         });
 
-        public static void Add(string id, System.Net.Sockets.TcpClient client, NetworkStream ns)
+        public static void Add(UserToken userToken)
         {
-            _addBlock.Post(new SocketInfo(id, client, ns));
+            _addBlock.Post(userToken);
         }
 
         static ActionBlock<string> _activeBlock = new ActionBlock<string>((id) =>
@@ -98,7 +98,8 @@ namespace Wenli.Live.WQueue.Net
                     if (c != null)
                     {
                         _list.Remove(c);
-                        c.Client.Close();
+                        c.Socket.Close();
+                        c.Socket = null;
                     }
                 }
                 catch { }
@@ -110,7 +111,7 @@ namespace Wenli.Live.WQueue.Net
             _remvoeBlock.Post(id);
         }
 
-        public static SocketInfo Get(string id)
+        public static UserToken Get(string id)
         {
             lock (_locker)
             {
@@ -120,11 +121,11 @@ namespace Wenli.Live.WQueue.Net
             }
         }
 
-        public static List<System.Net.Sockets.TcpClient> ToList()
+        public static List<UserToken> ToList()
         {
             lock (_locker)
             {
-                return _list.Select(b => b.Client).ToList();
+                return _list.ToList();
             }
         }
 

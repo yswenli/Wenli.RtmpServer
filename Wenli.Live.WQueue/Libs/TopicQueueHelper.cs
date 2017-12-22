@@ -5,28 +5,29 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Wenli.Live.WQueue.Model;
 using Wenli.Live.WQueue.Models;
 
 namespace Wenli.Live.WQueue.Libs
 {
     internal static class TopicQueueHelper
     {
-        static ConcurrentDictionary<string, QueueBase> _dic = new ConcurrentDictionary<string, QueueBase>();        
+        static ConcurrentDictionary<string, QueueBase> _dic = new ConcurrentDictionary<string, QueueBase>();
 
         static long _in = 0;
 
         static long _out = 0;
 
 
-        public static void Enqueue(QueueMessage<string> msg)
-        {            
+        public static void Enqueue(TopicMessage msg)
+        {
             QueueBase queue = new QueueBase();
             queue = _dic.GetOrAdd(msg.Topic, queue);
             queue.Enqueue(msg.Content);
             Interlocked.Increment(ref _in);
         }
 
-        public static QueueMessage<string> Dequque(string topic)
+        public static TopicMessage Dequque(string topic)
         {
             string msg = null;
 
@@ -36,10 +37,13 @@ namespace Wenli.Live.WQueue.Libs
             {
                 msg = queue.Dequeue();
 
-                Interlocked.Increment(ref _out);
-
                 if (msg != null)
-                    return new QueueMessage<string>() { Topic = topic, Content = msg };
+                {
+                    Interlocked.Increment(ref _out);
+
+                    return new TopicMessage() { Topic = topic, Content = msg };
+                }
+
             }
             return null;
         }

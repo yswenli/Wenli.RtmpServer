@@ -88,8 +88,6 @@ namespace Wenli.Live.WQueue.Test
                         oldTotal = calc.Total;
                         oldOutNum = calc.OutNum;
 
-
-
                         if (_server != null)
                         {
                             ouputString.Append(string.Format("{0}   服务器 已入队：{1} 已出队：{2}{3}", DateTimeHelper.GetCurrentString(), _server.In, _server.Out, Environment.NewLine));
@@ -102,9 +100,7 @@ namespace Wenli.Live.WQueue.Test
                             soldOutNum = _server.Out;
                         }
 
-
                         Console.WriteLine(ouputString.ToString());
-
                     }
                 }
                 catch (Exception ex)
@@ -147,6 +143,7 @@ namespace Wenli.Live.WQueue.Test
                     while (true)
                     {
                         productor.Enqueue<Data>("test", data);
+                        //Thread.Sleep(10);
                         calc.Total++;
                     }
                 });
@@ -158,11 +155,11 @@ namespace Wenli.Live.WQueue.Test
                     while (true)
                     {
                         productor.Enqueue("t", "0");
+                        //Thread.Sleep(10);
                         calc.Total++;
                     }
                 });
             }
-
         }
 
 
@@ -170,6 +167,7 @@ namespace Wenli.Live.WQueue.Test
         static void Consumer(Calc calc, string ip)
         {
             var consumer = new Client("consumer" + new Random().Next(), ip);
+
             consumer.Connect();
 
             if (b)
@@ -179,6 +177,7 @@ namespace Wenli.Live.WQueue.Test
                     while (true)
                     {
                         consumer.Dequeue<Data>("test");
+                        //Thread.Sleep(10);
                         calc.OutNum++;
                     }
                 });
@@ -190,6 +189,7 @@ namespace Wenli.Live.WQueue.Test
                     while (true)
                     {
                         consumer.Dequeue("t");
+                        //Thread.Sleep(10);
                         calc.OutNum++;
                     }
                 });

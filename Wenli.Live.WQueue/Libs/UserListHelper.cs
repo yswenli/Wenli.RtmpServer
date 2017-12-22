@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wenli.Live.Common;
 using Wenli.Live.WQueue.Models;
 
 namespace Wenli.Live.WQueue.Libs
@@ -22,7 +23,7 @@ namespace Wenli.Live.WQueue.Libs
 
                 if (t == null)
                 {
-                    _list.Add(new Topic() { ID = id, Name = topic, Joined = DateTime.Now });
+                    _list.Add(new Topic() { ID = id, Name = topic, Joined = DateTimeHelper.Current });
                 }
                 return t;
             }
