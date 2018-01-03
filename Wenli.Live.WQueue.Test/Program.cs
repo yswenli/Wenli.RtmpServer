@@ -53,6 +53,18 @@ namespace Wenli.Live.WQueue.Test
                 Console.Title = "队列消费者";
                 Consumer(calc, ip);
             }
+            else if (c == "sp")
+            {
+                Console.Title = "队列服务器+队列生产者";
+                serverStart();
+                Productor(calc, ip);
+            }
+            else if (c == "sc")
+            {
+                Console.Title = "队列服务器+队列消费者";
+                serverStart();
+                Consumer(calc, ip);
+            }
             else
             {
                 Console.Title = "队列服务器";
@@ -105,7 +117,7 @@ namespace Wenli.Live.WQueue.Test
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine("error {0}", ex.Message);
                 }
             });
 

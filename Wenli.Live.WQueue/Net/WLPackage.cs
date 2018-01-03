@@ -82,11 +82,7 @@ namespace Wenli.Live.WQueue.Net
             {
                 try
                 {
-                    List<byte> list = new List<byte>();
-
-                    list.AddRange(data);
-
-                    _sessionData.AddRange(list);
+                    _sessionData.AddRange(data);
 
                     if (_sessionData.Count > 0)
                     {
@@ -123,6 +119,10 @@ namespace Wenli.Live.WQueue.Net
                                     _sessionData.RemoveRange(0, total);
 
                                     callBack?.Invoke(msg);
+                                }
+                                else
+                                {
+                                    break;
                                 }
                             }
                             else

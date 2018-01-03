@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Wenli.Live.WQueue.Net
 
         Func<string, SocketMessage, SocketMessage> _handler;
 
-        public TcpServer(int port = 1937, int numConnections = 200000, int receiveBufferSize = 10 * 1024)
+        public TcpServer(int port = 1937, int numConnections = 200000, int receiveBufferSize = 100 * 1024)
         {
             this._port = port;
 

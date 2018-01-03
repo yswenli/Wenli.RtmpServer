@@ -37,7 +37,7 @@ namespace Wenli.Live.WQueue.Libs
             {
                 msg = queue.Dequeue();
 
-                if (msg != null)
+                if (!string.IsNullOrEmpty(msg))
                 {
                     Interlocked.Increment(ref _out);
 
